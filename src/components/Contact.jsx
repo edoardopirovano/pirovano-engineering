@@ -42,7 +42,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-            <div className="h-full">
+            <div className="h-full w-[90%] mx-auto">
               <iframe
                 src="https://maps.google.com/maps?q=pirovano%20engineering&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"

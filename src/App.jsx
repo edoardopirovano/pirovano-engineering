@@ -23,7 +23,7 @@ function App() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="section py-16"
+          className="px-4 py-16"
           id="activities"
         >
           <Activities />
@@ -33,7 +33,7 @@ function App() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="section bg-gray-50 py-16"
+          className="px-4 bg-gray-50 py-16"
           id="about"
         >
           <About />
@@ -43,7 +43,7 @@ function App() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="section py-16"
+          className="px-4 py-16"
           id="contact"
         >
           <Contact />
@@ -53,7 +53,7 @@ function App() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="section bg-gray-50 py-16"
+          className="px-4 bg-gray-50 py-16"
         >
           <ImageSlider />
         </motion.section>
