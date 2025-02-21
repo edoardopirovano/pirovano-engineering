@@ -1,0 +1,120 @@
+import { useTranslation } from 'react-i18next'
+import { motion } from 'framer-motion'
+import PropTypes from 'prop-types'
+import { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import '../styles/card.css'
+
+const ActivityCard = ({ title, description, detailedDescription, skills, icon, delay }) => {
+  const [isFlipped, setIsFlipped] = useState(false)
+
+  return (
+    <motion.div
+      className="relative h-[450px] cursor-pointer perspective-1000"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay }}
+      onClick={() => setIsFlipped(!isFlipped)}
+    >
+      <motion.div
+        className="w-full h-full relative preserve-3d transition-transform duration-500"
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+      >
+        {/* Front of card */}
+        <motion.div className="absolute w-full h-full backface-hidden">
+          <div className="bg-white rounded-xl shadow-lg p-6 h-full flex flex-col">
+            <div className="text-4xl mb-4 flex justify-center">{icon}</div>
+            <h3 className="text-2xl font-bold mb-3">{title}</h3>
+            <p className="text-lg font-medium text-primary-blue mb-4">{description}</p>
+            <p className="text-gray-700 text-sm flex-grow">{detailedDescription}</p>
+            <div className="flex items-center justify-end text-primary-blue mt-4">
+              <FontAwesomeIcon icon={faArrowRight} />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Back of card */}
+        <motion.div 
+          className="absolute w-full h-full backface-hidden"
+          style={{ transform: 'rotateY(180deg)' }}
+        >
+          <div className="bg-white rounded-xl shadow-lg p-6 h-full flex flex-col justify-between">
+            <div className="flex-grow flex items-center">
+              <ul className="list-disc list-inside space-y-2 text-sm w-full">
+                {skills.map((skill, index) => (
+                  <li key={index} className="text-gray-700">{skill}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex items-center text-primary-blue mt-4">
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  )
+}
+
+ActivityCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  detailedDescription: PropTypes.string.isRequired,
+  skills: PropTypes.arrayOf(PropTypes.string).isRequired,
+  icon: PropTypes.string.isRequired,
+  delay: PropTypes.number.isRequired
+}
+
+const Activities = () => {
+  const { t } = useTranslation()
+
+  const activities = [
+    {
+      title: t('activities.mechanical.title'),
+      description: t('activities.mechanical.description'),
+      detailedDescription: t('activities.mechanical.detailedDescription'),
+      skills: t('activities.mechanical.skills', { returnObjects: true }),
+      icon: '⚙️',
+      delay: 0
+    },
+    {
+      title: t('activities.design.title'),
+      description: t('activities.design.description'),
+      detailedDescription: t('activities.design.detailedDescription'),
+      skills: t('activities.design.skills', { returnObjects: true }),
+      icon: '🎨',
+      delay: 0.2
+    },
+    {
+      title: t('activities.consulting.title'),
+      description: t('activities.consulting.description'),
+      detailedDescription: t('activities.consulting.detailedDescription'),
+      skills: t('activities.consulting.skills', { returnObjects: true }),
+      icon: '💡',
+      delay: 0.4
+    }
+  ]
+
+  return (
+    <div className="container mx-auto">
+      <motion.div
+        className="text-center mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h2 className="text-4xl font-bold mb-4">{t('activities.title')}</h2>
+        <p className="text-xl text-gray-600">{t('activities.subtitle')}</p>
+      </motion.div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {activities.map((activity, index) => (
+          <ActivityCard key={index} {...activity} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default Activities 
