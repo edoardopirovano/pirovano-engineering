@@ -42,22 +42,6 @@ npm install
 npm run dev
 ```
 
-4. Build for production
-
-```bash
-npm run build
-```
-
-## Project Structure
-
-```
-src/
-  ├── components/     # React components
-  ├── i18n/          # Internationalization
-  ├── assets/        # Static assets
-  └── App.jsx        # Main application component
-```
-
 ## Contributing
 
 1. Fork the repository
