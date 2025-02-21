@@ -48,6 +48,8 @@ const Contact: FC = () => {
         >
           <div className="h-full w-[90%] mx-auto">
             <iframe
+              name="Google Maps"
+              title="Google Maps"
               src="https://maps.google.com/maps?q=pirovano%20engineering&t=&z=13&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
