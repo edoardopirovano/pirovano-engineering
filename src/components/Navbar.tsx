@@ -1,17 +1,23 @@
-import { useTranslation } from 'react-i18next'
-import { Link } from 'react-scroll'
-import { motion } from 'framer-motion'
-import PropTypes from 'prop-types'
-import LanguageToggle from './LanguageToggle'
-const Navbar = () => {
-  const { t } = useTranslation()
+import { FC } from "react";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-scroll";
+import { motion } from "framer-motion";
+import LanguageToggle from "./LanguageToggle";
 
-  const navItems = [
-    { id: 'home', label: t('nav.home') },
-    { id: 'activities', label: t('nav.activities') },
-    { id: 'about', label: t('nav.about') },
-    { id: 'contact', label: t('nav.contact') }
-  ]
+interface NavItem {
+  id: string;
+  label: string;
+}
+
+const Navbar: FC = () => {
+  const { t } = useTranslation();
+
+  const navItems: NavItem[] = [
+    { id: "home", label: t("nav.home") },
+    { id: "activities", label: t("nav.activities") },
+    { id: "about", label: t("nav.about") },
+    { id: "contact", label: t("nav.contact") },
+  ];
 
   return (
     <motion.nav
@@ -52,12 +58,7 @@ const Navbar = () => {
         </div>
       </div>
     </motion.nav>
-  )
-}
+  );
+};
 
-Navbar.propTypes = {
-  currentLang: PropTypes.string.isRequired,
-  toggleLanguage: PropTypes.func.isRequired
-}
-
-export default Navbar 
+export default Navbar;

@@ -1,24 +1,24 @@
-import { motion } from 'framer-motion'
-import './i18n'
-import { FaLinkedin } from 'react-icons/fa'
+import { FC } from "react";
+import { motion } from "framer-motion";
+import "./i18n";
+import { FaLinkedin } from "react-icons/fa";
 
 // Components
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Activities from './components/Activities'
-import About from './components/About'
-import Contact from './components/Contact'
-import ImageSlider from './components/ImageSlider'
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Activities from "./components/Activities";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import ImageSlider from "./components/ImageSlider";
 
-function App() {
-
+const App: FC = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      
+
       <main>
         <Hero />
-        
+
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -62,7 +62,10 @@ function App() {
       <footer className="bg-gray-900 text-white py-8">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
-            <p>© {new Date().getFullYear()} Pirovano Engineering srl - P.Iva 07607810962</p>
+            <p>
+              © {new Date().getFullYear()} Pirovano Engineering srl - P.Iva
+              07607810962
+            </p>
             <a
               href="https://www.linkedin.com/company/pirovano-engineering-srl/"
               target="_blank"
@@ -75,7 +78,7 @@ function App() {
         </div>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

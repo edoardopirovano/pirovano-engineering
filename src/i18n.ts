@@ -1,8 +1,9 @@
 import i18n from "i18next";
+import { InitOptions, Resource } from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 
-const resources = {
+const resources: Resource = {
   it: {
     translation: {
       nav: {
@@ -189,36 +190,36 @@ const resources = {
   },
 };
 
-i18n
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    resources,
-    fallbackLng: "it",
-    supportedLngs: ["it", "en"],
+const config: InitOptions = {
+  resources,
+  fallbackLng: "it",
+  supportedLngs: ["it", "en"],
 
-    // SEO friendly settings
-    defaultNS: "translation",
-    fallbackNS: false,
+  // SEO friendly settings
+  defaultNS: "translation",
+  fallbackNS: false,
 
-    // Language detection options
-    detection: {
-      order: ["path", "navigator"],
-      lookupFromPathIndex: 0,
-      checkWhitelist: true,
-    },
+  // Language detection options
+  detection: {
+    order: ["path", "navigator"],
+    lookupFromPathIndex: 0,
+  },
 
-    interpolation: {
-      escapeValue: false,
-    },
-  });
+  interpolation: {
+    escapeValue: false,
+  },
+};
+
+i18n.use(LanguageDetector).use(initReactI18next).init(config);
 
 // Add language metadata to help with SEO
 document.documentElement.lang = i18n.language;
-i18n.on("languageChanged", (lng) => {
+i18n.on("languageChanged", (lng: string) => {
   document.documentElement.lang = lng;
   const baseUrl = "https://www.pirovanoengineering.it";
-  let canonicalLink = document.querySelector("link[rel='canonical']");
+  let canonicalLink = document.querySelector(
+    "link[rel='canonical']"
+  ) as HTMLLinkElement | null;
   if (!canonicalLink) {
     canonicalLink = document.createElement("link");
     canonicalLink.rel = "canonical";

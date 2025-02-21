@@ -1,20 +1,21 @@
-import { useTranslation } from 'react-i18next'
-import { motion } from 'framer-motion'
+import { FC } from "react";
+import { useTranslation } from "react-i18next";
+import { motion, Variants } from "framer-motion";
 
-const About = () => {
-  const { t } = useTranslation()
+const About: FC = () => {
+  const { t } = useTranslation();
 
-  const textVariants = {
+  const textVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: (i) => ({
+    visible: (i: number) => ({
       opacity: 1,
       y: 0,
       transition: {
         delay: i * 0.2,
-        duration: 0.5
-      }
-    })
-  }
+        duration: 0.5,
+      },
+    }),
+  };
 
   return (
     <div className="container mx-auto">
@@ -29,14 +30,14 @@ const About = () => {
           variants={textVariants}
           custom={0}
         >
-          {t('about.title')}
+          {t("about.title")}
         </motion.h2>
         <motion.p
           className="text-xl text-primary-blue max-w-3xl mx-auto"
           variants={textVariants}
           custom={1}
         >
-          {t('about.description')}
+          {t("about.description")}
         </motion.p>
       </motion.div>
 
@@ -47,19 +48,11 @@ const About = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <motion.p
-            className="text-lg"
-            variants={textVariants}
-            custom={2}
-          >
-            {t('about.text1')}
+          <motion.p className="text-lg" variants={textVariants} custom={2}>
+            {t("about.text1")}
           </motion.p>
-          <motion.p
-            className="text-lg"
-            variants={textVariants}
-            custom={3}
-          >
-            {t('about.text2')}
+          <motion.p className="text-lg" variants={textVariants} custom={3}>
+            {t("about.text2")}
           </motion.p>
         </motion.div>
 
@@ -69,24 +62,16 @@ const About = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <motion.p
-            className="text-lg"
-            variants={textVariants}
-            custom={4}
-          >
-            {t('about.text3')}
+          <motion.p className="text-lg" variants={textVariants} custom={4}>
+            {t("about.text3")}
           </motion.p>
-          <motion.p
-            className="text-lg"
-            variants={textVariants}
-            custom={5}
-          >
-            {t('about.text4')}
+          <motion.p className="text-lg" variants={textVariants} custom={5}>
+            {t("about.text4")}
           </motion.p>
         </motion.div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default About 
+export default About;
