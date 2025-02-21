@@ -54,7 +54,7 @@ const ImageSlider = () => {
           key={currentIndex}
           src={images[currentIndex].src}
           alt={images[currentIndex].alt}
-          loading="lazy"
+          loading="eager"
           custom={currentIndex}
           variants={variants}
           initial="enter"
