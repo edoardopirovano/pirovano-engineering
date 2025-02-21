@@ -1,7 +1,6 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { useTranslation } from 'react-i18next'
 import './i18n'
+import { FaLinkedin } from 'react-icons/fa'
 
 // Components
 import Navbar from './components/Navbar'
@@ -12,18 +11,10 @@ import Contact from './components/Contact'
 import ImageSlider from './components/ImageSlider'
 
 function App() {
-  const { i18n } = useTranslation()
-  const [currentLang, setCurrentLang] = useState('it')
-
-  const toggleLanguage = () => {
-    const newLang = currentLang === 'it' ? 'en' : 'it'
-    setCurrentLang(newLang)
-    i18n.changeLanguage(newLang)
-  }
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar currentLang={currentLang} toggleLanguage={toggleLanguage} />
+      <Navbar />
       
       <main>
         <Hero />
@@ -69,8 +60,18 @@ function App() {
       </main>
 
       <footer className="bg-gray-900 text-white py-8">
-        <div className="container text-center">
-          <p>© {new Date().getFullYear()} Pirovano Engineering srl - P.Iva 07607810962</p>
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center">
+            <p>© {new Date().getFullYear()} Pirovano Engineering srl - P.Iva 07607810962</p>
+            <a
+              href="https://www.linkedin.com/company/pirovano-engineering-srl/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-2xl text-white hover:text-primary-red transition-colors duration-200"
+            >
+              <FaLinkedin />
+            </a>
+          </div>
         </div>
       </footer>
     </div>
