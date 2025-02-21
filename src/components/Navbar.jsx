@@ -23,7 +23,8 @@ const Navbar = ({ currentLang, toggleLanguage }) => {
         <div className="flex items-center">
           <img
             src="/logo.png"
-            alt="Pirovano Engineering"
+            alt="Pirovano Engineering - Logo aziendale"
+            loading="eager"
             className="h-12 w-auto"
           />
         </div>

@@ -2,12 +2,30 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const images = [
-  '/slide/01.jpg',
-  '/slide/03.jpg',
-  '/slide/04.jpg',
-  '/slide/05.jpg',
-  '/slide/06.jpg',
-  '/slide/07.jpg',
+  {
+    src: '/slide/01.jpg',
+    alt: 'Progettazione meccanica Pirovano Engineering - Esempio di design industriale'
+  },
+  {
+    src: '/slide/03.jpg',
+    alt: 'Automazione industriale - Macchinari progettati da Pirovano Engineering'
+  },
+  {
+    src: '/slide/04.jpg',
+    alt: 'Consulenza tecnica - Progetti di ingegneria meccanica'
+  },
+  {
+    src: '/slide/05.jpg',
+    alt: 'Design industriale - Soluzioni innovative Pirovano Engineering'
+  },
+  {
+    src: '/slide/06.jpg',
+    alt: 'Progettazione meccanica - Dettaglio componenti industriali'
+  },
+  {
+    src: '/slide/07.jpg',
+    alt: 'Ingegneria meccanica - Progetti realizzati da Pirovano Engineering'
+  },
 ]
 
 const variants = {
@@ -34,7 +52,9 @@ const ImageSlider = () => {
       <AnimatePresence initial={false} custom={currentIndex}>
         <motion.img
           key={currentIndex}
-          src={images[currentIndex]}
+          src={images[currentIndex].src}
+          alt={images[currentIndex].alt}
+          loading="lazy"
           custom={currentIndex}
           variants={variants}
           initial="enter"
