@@ -36,8 +36,35 @@ const variants = {
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [imagesPreloaded, setImagesPreloaded] = useState(false)
 
+  // Preload images
   useEffect(() => {
+    const preloadImages = async () => {
+      const imagePromises = images.map((image) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image()
+          img.src = image.src
+          img.onload = resolve
+          img.onerror = reject
+        })
+      })
+
+      try {
+        await Promise.all(imagePromises)
+        setImagesPreloaded(true)
+      } catch (error) {
+        console.error('Error preloading images:', error)
+      }
+    }
+
+    preloadImages()
+  }, [])
+
+  // Start the slider only after images are preloaded
+  useEffect(() => {
+    if (!imagesPreloaded) return
+
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
@@ -45,7 +72,7 @@ const ImageSlider = () => {
     }, 5000)
 
     return () => clearInterval(timer)
-  }, [])
+  }, [imagesPreloaded])
 
   return (
     <div className="container mx-auto relative h-[500px] overflow-hidden">
