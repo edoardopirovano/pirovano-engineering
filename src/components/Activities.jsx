@@ -25,7 +25,7 @@ const ActivityCard = ({ title, description, detailedDescription, skills, icon, d
         <motion.div className="absolute w-full h-full backface-hidden">
           <div className="bg-white rounded-xl shadow-lg p-6 h-full flex flex-col">
             <div className="text-4xl mb-4 flex justify-center">{icon}</div>
-            <h3 className="text-2xl font-bold mb-3">{title}</h3>
+            <h3 className="text-2xl font-bold mb-3 text-primary-red">{title}</h3>
             <p className="text-lg font-medium text-primary-blue mb-4">{description}</p>
             <p className="text-gray-700 text-sm flex-grow">{detailedDescription}</p>
             <div className="flex items-center justify-end text-primary-blue mt-4">
@@ -104,8 +104,8 @@ const Activities = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-4xl font-bold mb-4">{t('activities.title')}</h2>
-        <p className="text-xl text-gray-600">{t('activities.subtitle')}</p>
+        <h2 className="text-4xl font-bold mb-4 text-primary-red">{t('activities.title')}</h2>
+        <p className="text-xl text-primary-blue">{t('activities.subtitle')}</p>
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

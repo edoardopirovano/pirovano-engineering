@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import PropTypes from 'prop-types'
+import { FaLinkedin } from 'react-icons/fa'
 
 const ContactInfo = ({ icon, text }) => (
   <div className="flex items-center space-x-3 p-2">
@@ -31,7 +32,7 @@ const Contact = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-4xl font-bold mb-4">{t('contact.title')}</h2>
+        <h2 className="text-4xl font-bold mb-4 text-primary-red">{t('contact.title')}</h2>
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -103,7 +104,7 @@ const Contact = () => {
           </motion.form>
 
           <motion.div
-            className="space-x-8 mt-12"
+            className="space-x-8 mt-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -120,6 +121,21 @@ const Contact = () => {
               icon="✉️"
               text={t('contact.email')}
             />
+            <motion.div
+              className="mt-6 flex justify-start"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <a
+                href="https://www.linkedin.com/company/pirovano-engineering-srl/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-3xl text-primary-blue hover:text-primary-red transition-colors duration-200"
+              >
+                <FaLinkedin />
+              </a>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

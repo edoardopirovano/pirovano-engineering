@@ -25,14 +25,14 @@ const About = () => {
         viewport={{ once: true }}
       >
         <motion.h2
-          className="text-4xl font-bold mb-4"
+          className="text-4xl font-bold mb-4 text-primary-red"
           variants={textVariants}
           custom={0}
         >
           {t('about.title')}
         </motion.h2>
         <motion.p
-          className="text-xl text-gray-600 max-w-3xl mx-auto"
+          className="text-xl text-primary-blue max-w-3xl mx-auto"
           variants={textVariants}
           custom={1}
         >
