@@ -16,6 +16,7 @@
     "@tailwindcss/vite": "^4.0.7",
     "framer-motion": "^12.4.7",
     "i18next": "^24.2.2",
+    "i18next-browser-languagedetector": "^7.2.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-i18next": "^15.4.1",

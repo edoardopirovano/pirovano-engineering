@@ -1,5 +1,6 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
 
 const resources = {
   it: {
@@ -188,12 +189,42 @@ const resources = {
   },
 };
 
-i18n.use(initReactI18next).init({
-  resources,
-  lng: "it",
-  interpolation: {
-    escapeValue: false,
-  },
+i18n
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    resources,
+    fallbackLng: "it",
+    supportedLngs: ["it", "en"],
+
+    // SEO friendly settings
+    defaultNS: "translation",
+    fallbackNS: false,
+
+    // Language detection options
+    detection: {
+      order: ["path", "navigator"],
+      lookupFromPathIndex: 0,
+      checkWhitelist: true,
+    },
+
+    interpolation: {
+      escapeValue: false,
+    },
+  });
+
+// Add language metadata to help with SEO
+document.documentElement.lang = i18n.language;
+i18n.on("languageChanged", (lng) => {
+  document.documentElement.lang = lng;
+  const baseUrl = "https://www.pirovanoengineering.it";
+  let canonicalLink = document.querySelector("link[rel='canonical']");
+  if (!canonicalLink) {
+    canonicalLink = document.createElement("link");
+    canonicalLink.rel = "canonical";
+    document.head.appendChild(canonicalLink);
+  }
+  canonicalLink.href = `${baseUrl}/${lng}`;
 });
 
 export default i18n;
