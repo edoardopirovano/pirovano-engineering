@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { motion } from "framer-motion";
 import "./i18n";
-import { FaLinkedin } from "react-icons/fa";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -10,6 +9,7 @@ import Activities from "./components/Activities";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import ImageSlider from "./components/ImageSlider";
+import Footer from "./components/Footer";
 
 const App: FC = () => {
   return (
@@ -59,24 +59,7 @@ const App: FC = () => {
         </motion.section>
       </main>
 
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center">
-            <p>
-              © {new Date().getFullYear()} Pirovano Engineering srl - P.Iva
-              07607810962
-            </p>
-            <a
-              href="https://www.linkedin.com/company/pirovano-engineering-srl/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-2xl text-white hover:text-primary-red transition-colors duration-200"
-            >
-              <FaLinkedin />
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

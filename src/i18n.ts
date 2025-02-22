@@ -176,7 +176,7 @@ const resources: Resource = {
       },
       contact: {
         title: "CONTACT",
-        address: "Edificiosedici - Viale Sarca 336/F, 20126 Milan",
+        address: "Edificiosedici - Viale Sarca 336/F, 20126 Milan, Italy",
         phone: "+39 02 8688 2004",
         email: "p.beretta@piroeng.it",
         email2: "careers@piroeng.it",
