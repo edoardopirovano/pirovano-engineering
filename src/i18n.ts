@@ -25,7 +25,7 @@ const resources: Resource = {
           description:
             "Progettazione meccanica di macchine e componenti industriali.",
           detailedDescription:
-            "Pirovano Engineering Srl offre servizi di progettazione meccanica per diversi settori produttivi tra i quali l'Automotive, la Telecomunicazione e l'Alimentare. La progettazione meccanica viene sviluppata su specifica del Cliente. Il progetto può essere elaborato per l'ottenimento di singoli parti o per sistemi complessi.",
+            "Pirovano Engineering offre servizi di progettazione meccanica per diversi settori produttivi tra i quali l'Automotive, la Telecomunicazione e l'Alimentare. La progettazione meccanica viene sviluppata su specifica del Cliente. Il progetto può essere elaborato per l'ottenimento di singoli parti o per sistemi complessi.",
           skills: [
             "Progettazione di macchine automatiche, automatismi e carpenteria",
             "Studi di fattibilità",
@@ -41,7 +41,7 @@ const resources: Resource = {
           title: "INDUSTRIAL DESIGN",
           description: "Design industriale e sviluppo prodotto.",
           detailedDescription:
-            "La Pirovano Engineering Srl offre servizi di design per diversi settori produttivi tra i quali l'automotive e la telecomunicazione. Le soluzioni offerte sono attente a fornire il giusto equilibrio tra estetica e funzionalità con un occhio di riguardo ai costi.",
+            "Offriamo servizi di design per diversi settori produttivi tra i quali l'automotive e la telecomunicazione. Le soluzioni offerte sono attente a fornire il giusto equilibrio tra estetica e funzionalità con un occhio di riguardo ai costi.",
           skills: [
             "Analisi e studio del prodotto",
             "Proposte estetiche (Concept)",
@@ -61,7 +61,7 @@ const resources: Resource = {
           title: "CONSULENZA",
           description: "Consulenza tecnica e project management.",
           detailedDescription:
-            'La capacità di "connettersi" alle aziende è d\'importanza fondamentale per la Pirovano Engineering Srl, per questo fornisce un servizio di consulenza personalizzato anche presso gli uffici dei suoi clienti.',
+            'La capacità di "connettersi" alle aziende è d\'importanza fondamentale per la Pirovano Engineering, per questo fornisce un servizio di consulenza personalizzato anche presso gli uffici dei suoi clienti.',
           skills: [
             "Cessione di personale tecnico per periodi di durata flessibile",
             "Cessione di personale per projet management",
@@ -133,7 +133,7 @@ const resources: Resource = {
           title: "INDUSTRIAL DESIGN",
           description: "Industrial design and product development.",
           detailedDescription:
-            "Pirovano Engineering Srl offers design services for various production fields including automotive and telecommunications. The solutions are carefully tailored to provide the right balance between aesthetics, functionality and production cost.",
+            "We offer design services for various production fields including automotive and telecommunications. The solutions are carefully tailored to provide the right balance between aesthetics, functionality and production cost.",
           skills: [
             "Product analysis and studies",
             "Aesthetic Proposals (Concept)",
