@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
@@ -6,6 +6,60 @@ interface ContactInfoProps {
   icon: string;
   text: string;
 }
+
+const GoogleMapsIframe: FC = () => {
+  const [hasBeenVisible, setHasBeenVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasBeenVisible(true);
+        }
+      },
+      {
+        rootMargin: "100px", // Load when within 100px of viewport
+      }
+    );
+
+    const element = document.getElementById("map-container");
+    if (element) {
+      observer.observe(element);
+    }
+
+    return () => {
+      if (element) {
+        observer.unobserve(element);
+      }
+    };
+  }, []);
+
+  // Only render the iframe if it has been visible at least once
+  if (!hasBeenVisible) {
+    return (
+      <div
+        id="map-container"
+        className="h-full w-full bg-gray-100 rounded-lg flex items-center justify-center"
+      >
+        <div className="text-gray-500">Loading map...</div>
+      </div>
+    );
+  }
+
+  return (
+    <iframe
+      name="Google Maps"
+      title="Google Maps"
+      src="https://maps.google.com/maps?q=pirovano%20engineering&t=&z=13&ie=UTF8&iwloc=&output=embed"
+      width="100%"
+      height="100%"
+      style={{ border: 0, minHeight: "500px" }}
+      allowFullScreen={true}
+      loading="lazy"
+      className="rounded-lg shadow-lg h-full"
+    />
+  );
+};
 
 const ContactInfo: FC<ContactInfoProps> = ({ icon, text }) => (
   <div className="flex items-center space-x-3 p-2">
@@ -46,18 +100,8 @@ const Contact: FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="h-full w-[90%] mx-auto">
-            <iframe
-              name="Google Maps"
-              title="Google Maps"
-              src="https://maps.google.com/maps?q=pirovano%20engineering&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0, minHeight: "500px" }}
-              allowFullScreen={true}
-              loading="lazy"
-              className="rounded-lg shadow-lg h-full"
-            />
+          <div className="h-full w-[90%] mx-auto" id="map-container">
+            <GoogleMapsIframe />
           </div>
         </motion.div>
 
