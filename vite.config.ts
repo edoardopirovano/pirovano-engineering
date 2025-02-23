@@ -18,11 +18,8 @@ export default defineConfig({
         manualChunks: (id) => {
           // Create separate chunks for major dependencies
           if (id.indexOf("node_modules") !== -1) {
-            if (id.indexOf("react-dom") !== -1) {
-              return "react-dom";
-            }
             if (id.indexOf("react") !== -1) {
-              return "react-core";
+              return "react";
             }
             if (id.indexOf("framer-motion") !== -1) {
               return "animations";
