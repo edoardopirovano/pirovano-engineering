@@ -11,6 +11,28 @@ export default defineConfig({
   },
   build: {
     outDir: "dist",
-    sourcemap: true,
+    sourcemap: false,
+    minify: "terser",
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          // Create separate chunks for major dependencies
+          if (id.indexOf("node_modules") !== -1) {
+            if (id.indexOf("react-dom") !== -1) {
+              return "react-dom";
+            }
+            if (id.indexOf("react") !== -1) {
+              return "react-core";
+            }
+            if (id.indexOf("framer-motion") !== -1) {
+              return "animations";
+            }
+            return "vendor";
+          }
+        },
+      },
+    },
+    chunkSizeWarningLimit: 256,
+    reportCompressedSize: true,
   },
 });

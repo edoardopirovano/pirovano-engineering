@@ -1,8 +1,7 @@
 import { FC, useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import "../styles/card.css";
 
 interface ActivityCardProps {
@@ -57,7 +56,7 @@ const ActivityCard: FC<ActivityCardProps> = ({
               {detailedDescription}
             </p>
             <div className="flex items-center justify-end text-primary-blue mt-4">
-              <FontAwesomeIcon icon={faArrowRight} />
+              <FaAngleRight />
             </div>
           </div>
         </motion.div>
@@ -81,7 +80,7 @@ const ActivityCard: FC<ActivityCardProps> = ({
               </ul>
             </div>
             <div className="flex items-center text-primary-blue mt-4 pt-2">
-              <FontAwesomeIcon icon={faArrowLeft} />
+              <FaAngleLeft />
             </div>
           </div>
         </motion.div>
