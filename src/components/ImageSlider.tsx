@@ -41,43 +41,23 @@ const variants: Variants = {
 
 const ImageSlider: FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [imagesPreloaded, setImagesPreloaded] = useState(false);
+  const [ready, setReady] = useState(false);
+  const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
 
-  // Preload images
   useEffect(() => {
-    const preloadImages = async (): Promise<void> => {
-      const imagePromises = images.map((image) => {
-        return new Promise<void>((resolve, reject) => {
-          const img = new Image();
-          img.src = image.src;
-          img.onload = () => resolve();
-          img.onerror = reject;
-        });
-      });
+    setReady(false);
+    const preloadImage = new Image();
+    preloadImage.src = images[nextIndex].src;
+    preloadImage.onload = () => setReady(true);
+  }, [nextIndex]);
 
-      try {
-        await Promise.all(imagePromises);
-        setImagesPreloaded(true);
-      } catch (error) {
-        console.error("Error preloading images:", error);
-      }
-    };
-
-    preloadImages();
-  }, []);
-
-  // Start the slider only after images are preloaded
   useEffect(() => {
-    if (!imagesPreloaded) return;
-
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
+    if (!ready) return;
+    const timer = setTimeout(() => {
+      setCurrentIndex(nextIndex);
     }, 5000);
-
-    return () => clearInterval(timer);
-  }, [imagesPreloaded]);
+    return () => clearTimeout(timer);
+  }, [ready, nextIndex]);
 
   return (
     <div className="container mx-auto relative h-[500px] overflow-hidden">
